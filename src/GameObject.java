@@ -7,7 +7,10 @@ public abstract class GameObject
 {
     protected float x;
     protected float y;
+    protected int type;
     protected Sprite spr;
+
+    protected boolean remove = false;
 
     public void update()
     {
@@ -44,10 +47,25 @@ public abstract class GameObject
         return spr.getSY();
     }
 
-    protected void init(float x, float y, float r, float g, float b, float sx, float sy)
+    public int getType()
+    {
+        return type;
+    }
+
+    public boolean getRemove() {
+        return remove;
+    }
+
+    public void remove()
+    {
+        remove = true;
+    }
+
+    protected void init(float x, float y, float r, float g, float b, float sx, float sy, int type)
     {
         this.x = x;
         this.y = y;
+        this.type = type;
         this.spr = new Sprite (r, g, b, sx, sy);
 
     }
