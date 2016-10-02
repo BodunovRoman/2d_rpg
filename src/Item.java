@@ -4,11 +4,33 @@
 public class Item extends  GameObject
 {
     protected String name;
+    protected Player player;
     //protected Sprite spr;
+
+    public Item(Player play)
+    {
+        this.player = play;
+    }
+
 
     public void pickUp()
     {
+        System.out.println("You just picked up " + name + "!");
+        player.addItem(this);
+        remove();
+    }
 
+
+    @Override
+    public void update()
+    {
+        if(Physics.checkCollision(this, player))
+            pickUp();
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     protected void init(float x, float y, float r, float g, float b, float sx, float sy, String name)

@@ -11,19 +11,17 @@ public class Player extends GameObject
 {
 
     public static final float SIZE = 32;
-    public static final double LEVEL_CONST = 25 * Math.pow(3, (3.0/2.0));
 
-    //private int level;
-    private int health;
-    private float xp;
+    private Stats stats;
+    private Inventory inventory;
 
 
     public Player(float x, float y)
     {
         init(x,y,0.1f,1f,0.25f,SIZE,SIZE,0);
-        //level = 1;
-        health = 10;
-        xp = 0;
+        stats = new Stats(0);
+        inventory = new Inventory(20);
+
     }
 
     @Override
@@ -50,53 +48,46 @@ public class Player extends GameObject
         y += getSpeed()*magY;
     }
 
+    public void addItem(Item item)
+    {
+        inventory.add(item);
+    }
+
     public float getSpeed()
     {
-      return 4f;
+        return stats.getSpeed();
     }
 
     public int getLevel()
     {
-        double x= xp + 105;
-
-        double a = Math.sqrt(243 * (x * x) + 4050 * x + 17500);
-        double c = (3 * x + 25)/25;
-        double d = Math.cbrt(a / LEVEL_CONST + c);
-
-        return (int)(d - 1.0/d * 3) - 1;
+       return stats.getLevel();
     }
 
     public int getMaxHealth()
+
     {
-        return getLevel() * 10;
+        return stats.getMaxHealth();
     }
 
-    public int getCurrentHealth()
+   public int getCurrentHealth()
     {
-        int max = getMaxHealth();
-        if(health > max)
-            health = max;
-
-        return health;
+        return stats.getCurrentHealth();
     }
 
     public float getStrength()
     {
-        return getLevel()*4f;
+        return stats.getStrength();
     }
 
     public float getMagic()
     {
-        return getLevel()*4f;
+        return stats.getMagic();
     }
 
     public void addXp (float amt)
     {
-        xp += amt;
+        stats.addXp(amt);
     }
 
-    public void addItem(Item item)
-    {
-        System.out.println("We just picked up an item!");
-    }
+
 }
