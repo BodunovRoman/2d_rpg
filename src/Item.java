@@ -24,7 +24,7 @@ public class Item extends  GameObject
     @Override
     public void update()
     {
-        if(Physics.checkCollision(this, player))
+        if(Physics.checkCollision(this, player) != null)
             pickUp();
     }
 
@@ -37,7 +37,7 @@ public class Item extends  GameObject
     {
         this.x = x;
         this.y = y;
-        this.type = 1;
+        this.type = ITEM_ID;
         this.spr = new Sprite (r, g, b, sx, sy);
         this.name = name;
 

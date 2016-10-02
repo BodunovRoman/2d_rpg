@@ -9,6 +9,7 @@ import org.lwjgl.opengl.DisplayMode;
 import static org.lwjgl.opengl.GL11.*;
 import org.lwjgl.opengl.GL11;
 import java.io.Console;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,6 +31,11 @@ public class Main {
         gameLoop();
 
         cleanUp();
+    }
+
+    public static ArrayList<GameObject> sphereCollide(float x, float y, float radius)
+    {
+        return game.sphereCollide(x, y, radius);
     }
 
     private static void test(){

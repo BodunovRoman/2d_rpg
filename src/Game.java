@@ -21,6 +21,7 @@ public class Game
 
         objects.add(player);
         objects.add(new Cube(32,32, player));
+        objects.add(new CookieMonster(300, 500, 1));
     }
 
     public void getInput()
@@ -51,6 +52,19 @@ public class Game
         for(GameObject go : objects)
             go.render();
 
+    }
+
+    public ArrayList<GameObject> sphereCollide(float x, float y, float radius)
+    {
+        ArrayList<GameObject> res = new ArrayList<GameObject>();
+
+        for(GameObject go : objects)
+        {
+            if(Util.dist(go.getX(), go.getY(), x, y) < radius)
+                res.add(go);
+        }
+
+        return res;
     }
 
 
