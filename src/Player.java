@@ -7,12 +7,12 @@ import javax.swing.*;
  * Created by BodunovRA on 30.09.2016.
  */
 
-public class Player extends GameObject
+public class Player extends StatObject
 {
 
     public static final float SIZE = 32;
 
-    private Stats stats;
+
     private Inventory inventory;
 
 
@@ -44,8 +44,8 @@ public class Player extends GameObject
 
     private  void move(float magX, float magY)
     {
-        x += getSpeed()*magX;
-        y += getSpeed()*magY;
+        x += getSpeed() * magX * Time.getDelta();
+        y += getSpeed() * magY * Time.getDelta();
     }
 
     public void addItem(Item item)
@@ -53,36 +53,7 @@ public class Player extends GameObject
         inventory.add(item);
     }
 
-    public float getSpeed()
-    {
-        return stats.getSpeed();
-    }
 
-    public int getLevel()
-    {
-       return stats.getLevel();
-    }
-
-    public int getMaxHealth()
-
-    {
-        return stats.getMaxHealth();
-    }
-
-   public int getCurrentHealth()
-    {
-        return stats.getCurrentHealth();
-    }
-
-    public float getStrength()
-    {
-        return stats.getStrength();
-    }
-
-    public float getMagic()
-    {
-        return stats.getMagic();
-    }
 
     public void addXp (float amt)
     {

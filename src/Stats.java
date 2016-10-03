@@ -83,4 +83,9 @@ public class Stats
 
         return 0;
     }
+
+    public void damage(int amt)
+    {
+        health -= amt;
+    }
 }

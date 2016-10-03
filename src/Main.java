@@ -89,7 +89,7 @@ public class Main {
 
     private static void render(){
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        //glLoadIdentity();
+        glLoadIdentity();
 
         //Draw
         game.render();
@@ -98,8 +98,12 @@ public class Main {
         Display.sync(60);
     }
 
-    private static void gameLoop(){
+    private static void gameLoop()
+    {
+        Time.init();
         while (!Display.isCloseRequested()){
+
+            Time.update();
             getInput();
             update();
             render();
